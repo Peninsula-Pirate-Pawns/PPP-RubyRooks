@@ -68,6 +68,16 @@ ActiveRecord::Schema.define(version: 2019_12_20_165049) do
     t.index ["game_id"], name: "index_pieces_on_game_id"
   end
 
+  create_table "positions", force: :cascade do |t|
+    t.integer "x_position", limit: 2
+    t.integer "y_position", limit: 2
+    t.integer "piece", limit: 2
+    t.integer "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_positions_on_game_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
