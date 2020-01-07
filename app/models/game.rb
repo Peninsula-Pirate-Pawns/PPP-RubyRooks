@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Game < ApplicationRecord
   belongs_to :creating_user, :class_name => 'User', :foreign_key => 'creating_user_id'
   belongs_to :invited_user, :class_name => 'User', :foreign_key => 'invited_user_id', optional: true
@@ -8,9 +9,14 @@ class Game < ApplicationRecord
   has_many :pieces, dependent: :destroy
   before_create :assign_default_player
   scope :available, -> { where(invited_user_id: nil) }
-  
+
+  def check?
+    kings = pieces.where(type: 'King')
+    kings.any? { |king| pieces.any? { |piece| piece.can_take?(king) } }
+  end
+
   def assign_default_player
-	 write_attribute(:p1_id, creating_user.id)
+    write_attribute(:p1_id, creating_user.id)
   end
 
   def randomly_assign_player_one_and_player_two(current_user)
@@ -21,33 +27,35 @@ class Game < ApplicationRecord
       update(p1_id: current_user.id, p2_id: other_player.id)
     end
   end
-  
+
   def player_one
     return nil if p1_id.nil?
-    return User.find(p1_id)
+
+    User.find(p1_id)
   end
-  
+
   def player_two
     return nil if p2_id.nil?
-    return User.find(p2_id)
+
+    User.find(p2_id)
   end
-  
+
   def player_one=(u)
-    write_attribute(:p1_id,u.id)
+    write_attribute(:p1_id, u.id)
   end
-  
+
   def player_two=(u)
-    write_attribute(:p2_id,u.id)
+    write_attribute(:p2_id, u.id)
   end
-  
-  def get_player_one 
-    return (not player_one.nil?) ? player_one.email : "No Player One"
+
+  def get_player_one
+    player_one.present? ? player_one.email : 'No Player One'
   end
-  
+
   def get_player_two
-    return (not player_two.nil?) ? player_two.email : "No Player Two"
+    player_two.present? ? player_two.email : 'No Player Two'
   end
-  
+
   def populate_game
     # White Rooks
     pieces.create(x_position: 0, y_position: 0, piece_number: 0)

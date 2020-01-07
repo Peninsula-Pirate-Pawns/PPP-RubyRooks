@@ -7,7 +7,7 @@
           <%= image_tag piece.piece_number.to_s + ".png", class: "piece" %>
         </div>
       <% else %>
-        <div id="<%= x %>,<%= y %>" class="<%= is_black?(x,y) ? "black" : "white" %>">
+        <div id="<%= x %>,<%= y %>" class="<%= black_tile?(x,y) ? "black" : "white" %>">
           <% if the_piece %>
             <%= link_to piece_path(x_position: x, y_position: y), action: :update, method: :PATCH do %>
               <div class="transparent_box"></div>
