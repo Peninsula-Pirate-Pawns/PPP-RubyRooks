@@ -69,6 +69,20 @@ RSpec.describe Knight, type: :model do
         knight = create(:knight, x_position: 0, y_position: 0, piece_number: 1)
         expect(knight.valid_move?(3, 3)).to eq false
       end
+
+      it 'does not allow a move to a tile occupied by players piece' do
+        game = create(:game)
+        knight = create(:knight, x_position: 7, y_position: 1, piece_number: 1, game_id: game.id)
+        piece = create(:piece, x_position: 5, y_position: 0, piece_number: 3, game_id: game.id)
+
+        expect(knight.valid_move?(6, 6)).to eq false
+      end
+
+      it 'does not allow a move to original tile' do
+        knight = create(:knight, x_position: 7, y_position: 1, piece_number: 1)
+
+        expect(knight.valid_move?(7, 1)).to eq false
+      end
     end
   end
 end

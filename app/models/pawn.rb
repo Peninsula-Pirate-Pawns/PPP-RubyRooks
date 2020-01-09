@@ -1,47 +1,47 @@
 # frozen_string_literal: true
 
 class Pawn < Piece
-
-  def valid_move?(x,y)
-    if is_obstructed?(x, y)
+  def valid_move?(new_x,new_y)
+    if is_obstructed?(new_x, new_y)
       return false
     end
-    
-    if diagonal_capture(x, y)
+
+    if diagonal_capture(new_x, new_y)
       return true
     end
-    
-    if y - y_position != 0
+
+    x_distance = new_x - x_position
+    y_distance = new_y - y_position
+
+    if y_distance != 0
       return false
     end
 
-    if white_pawn? and x_position == 1 # Allows two space move on first move of white pawn
-      return x - x_position == 2 || x - x_position == 1 
-    elsif black_pawn? and x_position == 6 # Allows two space move on first move of black pawn
-      return x - x_position == -2 || x - x_position == -1
-    elsif white_pawn?
-      return x - x_position == 1 
-    elsif black_pawn?
-      return x - x_position == -1
+    if is_white? and x_position == 1 # Allows two space move on first move of white pawn
+      return x_distance == 2 || x_distance == 1 
+    elsif !is_white? and x_position == 6 # Allows two space move on first move of black pawn
+      return x_distance == -2 || x_distance == -1
+    elsif is_white?
+      return x_distance == 1 
+    elsif !is_white?
+      return x_distance == -1
     else
       return false
     end
   end
 
-  def diagonal_capture(x,y)
-    if (y - y_position).abs == 1 && (x - x_position).abs == 1
+  def diagonal_capture(new_x,new_y)
+    x_distance = new_x - x_position
+    y_distance = new_y - y_position
+
+    return false if y_distance.abs != 1
+
+    if is_white? && x_distance == 1 || !is_white? && x_distance == -1
       targets = game.pieces.find do |piece|
-        piece.x_position == x && piece.y_position == y
+        piece.x_position == new_x && piece.y_position == new_y
       end
+
       return targets.present?
-    end 
-  end
-
-  def white_pawn?
-    return piece_number == 5
-  end
-
-  def black_pawn?
-    return piece_number == 11
+    end
   end
 end

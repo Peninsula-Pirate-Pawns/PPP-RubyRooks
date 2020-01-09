@@ -20,6 +20,9 @@ FactoryBot.define do
   factory :queen, parent: :piece, class: 'Queen' do
   end
 
+  factory :bishop, parent: :piece, class: 'Bishop' do
+  end
+
   factory :knight, parent: :piece, class: 'Knight' do
   end
 
@@ -30,9 +33,8 @@ FactoryBot.define do
   end
 
   factory :user do
-    sequence(:email, 9999) { |n| "person#{n}@example.com" }
+    sequence(:email) { |n| "person#{n}@example.com" }
     password { 'password' }
     password_confirmation { 'password' }
   end
-
 end

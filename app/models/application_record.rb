@@ -3,7 +3,7 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
-  def white?
+  def is_white?
     piece_number < 6
   end
 end
