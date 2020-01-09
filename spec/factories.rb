@@ -14,13 +14,13 @@ FactoryBot.define do
     association :game
   end
 
-  factory :king, parent: :piece, class: 'King' do
+  factory :king, parent: :piece, class: 'King' do        
   end
 
   factory :queen, parent: :piece, class: 'Queen' do
   end
 
-  factory :bishop, parent: :piece, class: 'Bishop' do
+  factory :bishop, parent: :piece, class: 'Bishop' do    
   end
 
   factory :knight, parent: :piece, class: 'Knight' do

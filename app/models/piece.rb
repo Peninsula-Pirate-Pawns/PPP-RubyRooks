@@ -2,6 +2,10 @@
 
 class Piece < ApplicationRecord
   belongs_to :game
+  
+  def is_obstructed?(new_x, new_y)
+    x_sorted_array = [new_x, x_position].sort
+    y_sorted_array = [new_y, y_position].sort
 
   def is_obstructed?(new_x, new_y)
     x_sorted_array = [new_x, x_position].sort

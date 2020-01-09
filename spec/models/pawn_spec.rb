@@ -53,6 +53,16 @@ RSpec.describe Pawn, type: :model do
         expect(@pawn.valid_move?(1, 7)).to eq false
       end
 
+      it 'should not allow moves to tiles occupied with players piece' do
+        piece = create(:piece, x_position: 3, y_position: 7, piece_number: 3, game_id: @game.id)
+
+        expect(@pawn.valid_move?(6,6)).to eq false
+      end
+
+      it 'should not allow moves to original tile' do
+        expect(@pawn.valid_move?(1,7)).to eq false
+      end
+
       it 'checks for obstructions' do
         piece = create(:piece, x_position: 2, y_position: 7, piece_number: 8, game_id: @game.id)
 
@@ -106,6 +116,16 @@ RSpec.describe Pawn, type: :model do
 
       it 'should not allow moves to original tile' do
         expect(@pawn.valid_move?(6, 7)).to eq false
+      end
+
+      it 'should not allow moves to tiles occupied with players piece' do
+        piece = create(:piece, x_position: 5, y_position: 6, piece_number: 10, game_id: @game.id)
+
+        expect(@pawn.valid_move?(5,6)).to eq false
+      end
+
+      it 'should not allow moves to original tile' do
+        expect(@pawn.valid_move?(6,7)).to eq false
       end
 
       it 'checks for obstructions' do

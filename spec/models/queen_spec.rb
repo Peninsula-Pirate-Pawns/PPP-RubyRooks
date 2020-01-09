@@ -59,5 +59,11 @@ RSpec.describe Queen, type: :model do
 
       expect(queen.valid_move?(3, 4)).to be false
     end
+
+    it 'does not allow a move to the original location' do
+      queen = create(:queen, x_position: 3, y_position: 4, piece_number: 3)
+
+      expect(queen.valid_move?(3,4)).to be false
+    end
   end
 end

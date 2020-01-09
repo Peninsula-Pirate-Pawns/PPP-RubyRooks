@@ -9,7 +9,7 @@ class Pawn < Piece
     if diagonal_capture(new_x, new_y)
       return true
     end
-
+    
     x_distance = new_x - x_position
     y_distance = new_y - y_position
 
@@ -33,7 +33,7 @@ class Pawn < Piece
   def diagonal_capture(new_x,new_y)
     x_distance = new_x - x_position
     y_distance = new_y - y_position
-
+    
     return false if y_distance.abs != 1
 
     if is_white? && x_distance == 1 || !is_white? && x_distance == -1
