@@ -50,4 +50,9 @@ class Piece < ApplicationRecord
       assign_attributes(x_position: 8, y_position: 0)
     end
   end
+
+  def can_take?(piece)
+    valid_move?(piece.x_position, piece.y_position) &&
+      (is_white? != piece.is_white?)
+  end
 end
