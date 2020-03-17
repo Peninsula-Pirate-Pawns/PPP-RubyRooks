@@ -155,18 +155,18 @@ RSpec.describe PiecesController, type: :controller do
       expect(@game.winner).to eq @player2
     end
 
-    it 'game in check when black piece takes a white piece and puts white king in check' do
+    it 'puts game in check when black piece takes a white piece and puts white king in check' do
       white_king = create(:king, x_position: 0, y_position: 4, game_id: @game.id, piece_number: 4)
       white_pawn = create(:pawn, x_position: 0, y_position: 5, game_id: @game.id, piece_number: 5)
       black_rook = create(:rook, x_position: 0, y_position: 7, game_id: @game.id, piece_number: 6)
 
       sign_in @player2
 
-      # put :update, params: { id: black_rook.id, x_position: 0, y_position: 5, format: :js }
       black_rook.move_to!(0, 5)
       white_pawn.reload
       black_rook.reload
       @game.reload
+
       expect(black_rook.x_position).to eq 0
       expect(black_rook.y_position).to eq 5
       expect(@game.check?(!black_rook.is_white?)).to eq true
