@@ -157,20 +157,38 @@ RSpec.describe PiecesController, type: :controller do
 
     it 'puts game in check when black piece takes a white piece and puts white king in check' do
       white_king = create(:king, x_position: 0, y_position: 4, game_id: @game.id, piece_number: 4)
-      white_pawn = create(:pawn, x_position: 0, y_position: 5, game_id: @game.id, piece_number: 5)
+      white_pawn1 = create(:pawn, x_position: 0, y_position: 5, game_id: @game.id, piece_number: 5)
       black_rook = create(:rook, x_position: 0, y_position: 7, game_id: @game.id, piece_number: 6)
-      create(:move, game_id: @game.id, piece_id: white_pawn.id, start_piece: 5)
+      white_pawn2 = create(:pawn, x_position: 1, y_position: 2, piece_number: 5, game_id: @game.id)
+      move = create(:move, game_id: @game.id, piece_id: white_pawn2.id, start_piece: 5)
 
       sign_in @player2
 
-      black_rook.move_to!(0, 5)
-      white_pawn.reload
+      put :update, params: { id: black_rook.id, x_position: 0, y_position: 5, format: :js }
       black_rook.reload
       @game.reload
-
       expect(black_rook.x_position).to eq 0
       expect(black_rook.y_position).to eq 5
+      expect(flash[:alert]).to eq ['White King in Check.']
       expect(@game.check?(!black_rook.is_white?)).to eq true
+    end
+
+    it 'Does not allow black king to move into check' do
+      white_king = create(:king, x_position: 0, y_position: 4, game_id: @game.id, piece_number: 4)
+      white_pawn1 = create(:pawn, x_position: 0, y_position: 5, game_id: @game.id, piece_number: 5)
+      black_king = create(:king, x_position: 2, y_position: 4, game_id: @game.id, piece_number: 10)
+      white_pawn2 = create(:pawn, x_position: 1, y_position: 2, piece_number: 5, game_id: @game.id)
+      move = create(:move, game_id: @game.id, piece_id: white_pawn2.id, start_piece: 5)
+
+      sign_in @player2
+
+      put :update, params: { id: black_king.id, x_position: 1, y_position: 4, format: :js }
+      black_king.reload
+      @game.reload
+      expect(black_king.x_position).to eq 2
+      expect(black_king.y_position).to eq 4
+      expect(flash[:alert]).to eq ['You cannot put/leave yourself in Check.']
+      expect(@game.check?(!black_king.is_white?)).to eq false
     end
   end
 
