@@ -20,6 +20,7 @@
   function init_draggables_and_droppables() { 
       $('.piece').draggable({
         containment: '.gameboard',
+        revert: 'invalid', 
         snap: '.tile',
         cursor: 'crosshair',
         scroll: false
