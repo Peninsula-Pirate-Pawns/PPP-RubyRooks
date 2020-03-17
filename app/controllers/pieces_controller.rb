@@ -105,7 +105,6 @@ class PiecesController < ApplicationController
       return false
     end
 
-    return false if piece.can_take?(helpers.get_piece(x, y, piece.game)) && piece.type == 'King'
     return false unless piece.puts_enemy_in_check?(x, y)
 
     current_user.id == piece.game.p1_id ? 'Black King in Check.' : 'White King in Check.'
