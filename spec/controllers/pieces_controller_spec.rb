@@ -159,6 +159,7 @@ RSpec.describe PiecesController, type: :controller do
       white_king = create(:king, x_position: 0, y_position: 4, game_id: @game.id, piece_number: 4)
       white_pawn = create(:pawn, x_position: 0, y_position: 5, game_id: @game.id, piece_number: 5)
       black_rook = create(:rook, x_position: 0, y_position: 7, game_id: @game.id, piece_number: 6)
+      create(:move, game_id: @game.id, piece_id: white_pawn.id, start_piece: 5)
 
       sign_in @player2
 
