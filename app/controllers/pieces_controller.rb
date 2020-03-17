@@ -22,7 +22,7 @@ class PiecesController < ApplicationController
       @game.write_attribute(:state, nil)
     end
     @game.save
-    
+
     opponent = @game.opponent(current_user)
     ActionCable.server.broadcast "game_channel_user_#{opponent&.id}", move: render_movement, piece: @piece
   end
@@ -32,7 +32,7 @@ class PiecesController < ApplicationController
     @rook = Piece.find(params[:rook_id])
     @game = Game.find(@piece.game_id)
     @piece.castle!(@rook)
-    
+
     opponent = @game.opponent(current_user) 
     ActionCable.server.broadcast "game_channel_user_#{opponent&.id}", castle: render_movement, piece: @piece
   end
@@ -100,9 +100,6 @@ class PiecesController < ApplicationController
   end
 
   def check_test(piece, x, y)
-    return false if piece.can_take?(helpers.get_piece(x, y, piece.game)) && piece.type == 'King'
-    return false if piece.can_take?(helpers.get_piece(x, y, piece.game)) && !piece.puts_self_in_check?(x, y)
-
     if piece.puts_self_in_check?(x, y)
       flash.now[:alert] << 'You cannot put/leave yourself in Check.'
       return false

@@ -53,7 +53,6 @@ class Game < ApplicationRecord
     return (not player_two.nil?) ? player_two.email : "No Player Two"
   end
 
-  
   def check?(white)
     king = pieces_for_color(white).select { |piece| piece.type == 'King' }.first
     return false unless king
@@ -65,7 +64,6 @@ class Game < ApplicationRecord
   def pieces_for_color(white)
     pieces.select { |piece| piece.is_white? == white }
   end
-
 
   def checkmate?(white)
     return false unless check?(white)
