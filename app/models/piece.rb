@@ -143,6 +143,7 @@ class Piece < ApplicationRecord
 
   def puts_enemy_in_check?(x, y)
     previous_attributes = attributes
+
     begin
       update(x_position: x, y_position: y)
       game.pieces.reload
