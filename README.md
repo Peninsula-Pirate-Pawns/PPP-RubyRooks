@@ -1,5 +1,7 @@
 # Peninsula Pirate Pawns
 
+![Peninsula Pirate Pawns](https://i.imgur.com/UGOaEbT.png)
+
 This web application is a simple game of chess with a pirate theme. Our Agile team members all resided in Florida at the time we came together to make this project so we found it fitting to have an ocean related theme. Make an account, join or create a game and flex your strategic thinking muscles!
 
 ## Features
