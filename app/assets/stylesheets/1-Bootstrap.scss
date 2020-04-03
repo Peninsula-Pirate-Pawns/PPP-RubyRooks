@@ -1,0 +1,6 @@
+@import "bootstrap";
+
+// I placed this bootstrap import here so our custom CSS classes would override Bootstrap's classes.
+// This file is loaded first in the asset pipeline.
+// The pipeline loads CSS files numerically first then alphabetically. Now that our custom CSS files come
+// after this one they will override bootstrap without having to use !important (which is dangerous).

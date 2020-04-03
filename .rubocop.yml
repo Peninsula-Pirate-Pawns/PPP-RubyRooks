@@ -1,20 +1,39 @@
-Style/Encoding:
+Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
-Style/ClassAndModuleChildren:
+Metrics/AbcSize:
   Enabled: false
 
-Style/IfUnlessModifier:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/MixinUsage:
+Metrics/BlockLength:
   Enabled: false
 
 Metrics/LineLength:
   Enabled: false
 
-Metrics/BlockLength:
+Style/ClassAndModuleChildren:
   Enabled: false
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/HashSyntax:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/MixinUsage:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+

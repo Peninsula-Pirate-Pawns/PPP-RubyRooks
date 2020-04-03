@@ -1,0 +1,46 @@
+<div class="hero">
+  
+  <br />
+  <div class="col-12 text-center">
+    
+    <div class="row text-center">
+      <% if @created.present? %>
+        <div class="col-12 col-sm">
+            <ul class="list-group game-list-group">
+              <h3 class="game-list-header">Created Games</h3>
+                  <% @created.each do |game| %>
+                    <li class="list-group-item game-list-item">
+                      <h3><%= link_to game.name, game_path(game) %></h3>
+                    </li>
+                  <% end %>
+            </ul>
+        </div>
+      <% end %>
+
+      <% if @joined.present? %>
+        <div class="col-12 col-sm">
+            <ul class="list-group game-list-group">
+              <h3 class="game-list-header">Joined Games</h3>
+                  <% @joined.each do |game| %>
+                    <li class="list-group-item text-center game-list-item">
+                      <h3><%= link_to game.name, game_path(game) %></h3>
+                    </li>    
+                  <% end %>
+            </ul>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm">
+          <ul class="list-group game-list-group">
+            <h3 class="game-list-header">User Stats</h3>
+            <li class="list-group-item text-center game-list-item">
+              <h3>Wins: <%= @wins.length %></h3>
+            </li> 
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
