@@ -1,7 +1,6 @@
-<div class="hero">
-  <br />
-  <div class="col-6 offset-3 text-center">
-    <div class="row text-center">
+<div class="col-6 offset-3 text-center game-list-container">
+  <div class="row text-center">
+    <% if user_signed_in? %>
       <% if @games.available.present? %>
         <div class="col-12 col-sm">
           <ul class="game-list-group list-group">
@@ -17,11 +16,28 @@
           </ul>
         </div>
       <% else %>
-        <div class="col-10 offset-1 text-center">
-            <h3>No games available to join.</h3>
-            <%= link_to 'New Game', new_game_path, class: 'btn black-gold-btn'%>
+        <div class="col-12 col-sm">
+          <ul class="game-list-group list-group">
+            <h3 class="game-list-header">No games available.</h3>
+            <li class="list-group-item center-btn">
+              <%= link_to 'New Game', new_game_path, class: 'btn black-gold-btn'%>
+            </li>
+          </ul>
         </div>
       <% end %>
-    </div>
+
+    <% else %>
+      <div class="col-12 col-sm">
+        <ul class="game-list-group list-group">
+          <h3 class="game-list-header">Ahoy matey!</h3>
+          <section class="welcome-login-message">
+            <p>Thanks for visiting our site. <br />
+                Please sign in or sign up to start a game of chess.</p>
+            <%= link_to 'Sign In', new_user_session_path, class: 'btn black-gold-btn'%>&nbsp&nbsp
+            <%= link_to 'Sign Up', new_user_registration_path, class: 'btn black-gold-btn'%>
+          </section>
+        </ul>
+      </div>
+    <% end %>
   </div>
 </div>

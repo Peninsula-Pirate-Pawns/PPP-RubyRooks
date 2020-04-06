@@ -6,8 +6,9 @@
 }
 
 body {
-  background: image_url('hero6.jpg');
-  background-position: center;
+  background: image_url('hero5.jpg') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
 }
 
 .hero {
@@ -44,9 +45,8 @@ a:hover { color: #dcae02; }
 }
 
 .list-group-item {
-  background: image_url('chest.jpg')no-repeat center center;
-  background-size: center;
-  background-position: center
+  background-color: transparent;
+  border: none;
 }
 
 .list-group-item a {
@@ -57,6 +57,10 @@ a:hover { color: #dcae02; }
   text-decoration: none;
   color: #dcae02;
   border-color: #dcae02;
+}
+
+.game-list-container {
+  margin-top: 5%;
 }
 
 .game-list-header {
@@ -72,6 +76,9 @@ a:hover { color: #dcae02; }
 }
 
 .game-list-item {
+  background: image_url('chest.jpg')no-repeat center center;
+  background-size: center;
+  background-position: center;
   border: solid 2px white;
   border-top: 0;
   h3 {
@@ -104,9 +111,26 @@ a:hover { color: #dcae02; }
   margin: 0 0 0 auto;
 }
 
+.center-btn {
+  margin: 0 auto;
+}
+
 .new-game-btn:hover {
   color: #fff;
   text-decoration: none;
+}
+
+.welcome-login-message {
+  background-color: #292b2c;
+  border: solid 2px #F4FAF9;
+  text-align: center;
+  a {
+    margin: 0 auto 1rem auto;
+  }
+  p { 
+    color: #F4FAF9;
+    margin-top: 1rem;
+  }
 }
 
 .white {
