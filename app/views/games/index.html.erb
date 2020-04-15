@@ -1,56 +1,43 @@
-<div class="hero">
-  
-  <br />
-  <div class="col-10 offset-1 text-center">
-    
-    <div class="row text-center">
-      <div class="col-12 col-sm">
-        <% if @created.present? %>
-          <ul class="list-group">
-            <h3>Created Games</h3>
-                <% @created.each do |game| %>
-                  <li class="list-group-item">
-                    <h4><%= link_to game.name, game_path(game) %></h4>
-                  </li>
-                <% end %>
-          </ul>
-        <% end %>
-      </div>
-      <div class="col-12 col-sm">
-        <% if @joined.present? %>
-          <ul class="list-group">
-            <h3>Joined Games</h3>
-                <% @joined.each do |game| %>
-                  <li class="list-group-item text-center">
-                    <h3><%= link_to game.name, game_path(game) %></h3>
-                  </li>    
-                <% end %>
-          </ul>
-        <% end %>
-      
-      </div>
-
-      <div class="col-12 col-sm">
-        <% if @games.available.present? %>
-          <ul class="list-group">
-            <h3>Available Games</h3>
+<div class="col-6 offset-3 text-center game-list-container">
+  <div class="row text-center">
+    <% if user_signed_in? %>
+      <% if @games.available.present? %>
+        <div class="col-12 col-sm">
+          <ul class="game-list-group list-group">
+            <h3 class="game-list-header">Available Games</h3>
             <% @games.available.each do |game| %>
-              <li class="list-group-item">
-                <h4><%= game.name %></h4> &nbsp &nbsp &nbsp 
+              <li class="game-list-item list-group-item">
+                <h3><%= game.name %></h3> &nbsp &nbsp &nbsp 
                 <%= link_to "Join", game_update_invited_user_path(game), remote: true,
                     method: :get, data: {confirm: 'Are you sure you want to join?'},
-                    class: 'btn btn-outline-info' %>
+                    class: 'btn black-gold-btn right-align-btn' %>
               </li>
             <% end %>
           </ul>
+        </div>
+      <% else %>
+        <div class="col-12 col-sm">
+          <ul class="game-list-group list-group">
+            <h3 class="game-list-header">No games available.</h3>
+            <li class="list-group-item center-btn">
+              <%= link_to 'New Game', new_game_path, class: 'btn black-gold-btn'%>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+
+    <% else %>
+      <div class="col-12 col-sm">
+        <ul class="game-list-group list-group">
+          <h3 class="game-list-header">Ahoy matey!</h3>
+          <section class="welcome-login-message">
+            <p>Thanks for visiting our site. <br />
+                Please sign in or sign up to start a game of chess.</p>
+            <%= link_to 'Sign In', new_user_session_path, class: 'btn black-gold-btn'%>&nbsp&nbsp
+            <%= link_to 'Sign Up', new_user_registration_path, class: 'btn black-gold-btn'%>
+          </section>
+        </ul>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
-<div class="col-10 offset-1 text-center">
-  <% else %>
-    <h3>No games available to join. <%= link_to 'New Game', new_game_path, class: 'btn btn-primary'%></h3>
-  <% end %>
-</div>
-    
-  

@@ -6,8 +6,9 @@
 }
 
 body {
-  background: image_url('hero6.jpg');
-  background-position: center;
+  background: image_url('hero5.jpg') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
 }
 
 .hero {
@@ -25,12 +26,13 @@ h1, h2, h3, h4 {
   font-family: 'Pirata One', cursive;
 }
 
+a:hover { color: #dcae02; }
+
 .navbar-inverse.bg-inverse {
   font-family: 'Pirata One', cursive;
   box-shadow: 0px 1px 3px #2a2a2a;
   color: #F4FAF9;
   font-size: 20px;
-  
 }
 
 .navbar-inverse .navbar-brand {
@@ -42,20 +44,93 @@ h1, h2, h3, h4 {
   background-color: #804609;
 }
 
-
 .list-group-item {
-  background: image_url('chest.jpg')no-repeat center center;
-  background-size: center;
-  background-position: center
-
-  
+  background-color: transparent;
+  border: none;
 }
+
 .list-group-item a {
   color: #F4FAF9;
 }
+
 .list-group-item a:hover {
   text-decoration: none;
+  color: #dcae02;
+  border-color: #dcae02;
+}
+
+.game-list-container {
+  margin-top: 5%;
+}
+
+.game-list-header {
+  background-color: #292b2c;
+  margin-bottom: 0;
+  padding: 10px;
+  border: solid 2px white;
+  text-shadow: 4px -2px black;
+}
+
+.game-list-group {
+  margin-bottom: 1rem;
+}
+
+.game-list-item {
+  background: image_url('chest.jpg')no-repeat center center;
+  background-size: center;
+  background-position: center;
+  border: solid 2px white;
+  border-top: 0;
+  h3 {
+    transition: all 0.2s ease-in-out;
+    text-shadow: 4px -2px black;
+  }
+  a { transition: all 0.2s ease-in-out; }
+}
+
+.game-list-item:hover {
+  h3 { color: #dcae02; }
+  a { color: #dcae02; }
+}
+
+.stat-list-item {
+  background: none;
+  background-color: #292b2c;
+}
+
+.black-gold-btn {
+  font-family: 'Pirata One', cursive;
+  background-color: #292b2c;
+  border: solid 2px #F4FAF9;
   color: #F4FAF9;
+}
+
+.black-gold-btn:hover { border-color: #dcae02; }
+
+.right-align-btn {
+  margin: 0 0 0 auto;
+}
+
+.center-btn {
+  margin: 0 auto;
+}
+
+.new-game-btn:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.welcome-login-message {
+  background-color: #292b2c;
+  border: solid 2px #F4FAF9;
+  text-align: center;
+  a {
+    margin: 0 auto 1rem auto;
+  }
+  p { 
+    color: #F4FAF9;
+    margin-top: 1rem;
+  }
 }
 
 .white {
@@ -93,7 +168,6 @@ hr {
   height: 3px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), black, rgba(0, 0, 0, 0));
 }
-
 
 .surrendered {
   position: absolute;
