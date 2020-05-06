@@ -33,7 +33,7 @@ class PiecesController < ApplicationController
     @game = Game.find(@piece.game_id)
     @piece.castle!(@rook)
 
-    opponent = @game.opponent(current_user) 
+    opponent = @game.opponent(current_user)
     ActionCable.server.broadcast "game_channel_user_#{opponent&.id}", castle: render_movement, piece: @piece
   end
 
@@ -45,8 +45,10 @@ class PiecesController < ApplicationController
     white_promotions = { 'Bishop' => 2, 'Knight' => 1, 'Queen' => 3, 'Rook' => 0 }
     black_promotions = { 'Bishop' => 8, 'Knight' => 7, 'Queen' => 9, 'Rook' => 6 }
 
+    opponent = @game.opponent(current_user)
     @piece.is_white? ? number = white_promotions[@promotion] : number = black_promotions[@promotion]
     @piece.update(type: @promotion, piece_number: number)
+    ActionCable.server.broadcast "game_channel_user_#{opponent&.id}", promotion: render_movement, piece: @piece
   end
 
   def reload
