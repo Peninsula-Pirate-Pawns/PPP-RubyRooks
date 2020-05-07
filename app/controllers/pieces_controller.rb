@@ -48,7 +48,8 @@ class PiecesController < ApplicationController
     opponent = @game.opponent(current_user)
     @piece.is_white? ? number = white_promotions[@promotion] : number = black_promotions[@promotion]
     @piece.update(type: @promotion, piece_number: number)
-    ActionCable.server.broadcast "game_channel_user_#{opponent&.id}", promotion: render_movement, piece: @piece
+
+    ActionCable.server.broadcast "game", promotion: render_promotion, piece: @piece
   end
 
   def reload
@@ -80,6 +81,12 @@ class PiecesController < ApplicationController
   def render_movement
     respond_to do |format|
       format.js { render 'update' }
+    end
+  end
+
+  def render_promotion
+    respond_to do |format|
+      format.js { render 'promotion' }
     end
   end
 

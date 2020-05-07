@@ -6,9 +6,10 @@ init_draggables_and_droppables();
 <% if @piece.type == 'Pawn' %>
   <% if @piece.promotable? %>
     $('[data-piece-id="<%= @piece.id %>"]').popover({
+      constainer: 'body',
       placement: 'top',
       html: true,
-      title: "Choose promotion:",
+      title: "PROMOTION:",
       trigger: "manual",
       content: "<div id='pawn-promotion' class='mx-auto'></div>"
     });
