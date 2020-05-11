@@ -1,12 +1,6 @@
-$('.game-board').html('<%= j (render partial: 'games/board') %>');
-$('.player-one').html('<%= j (render partial: 'games/player_one') %>');
-$('.player-two').html('<%= j (render partial: 'games/player_two') %>');
-init_draggables_and_droppables();
-
 <% if @piece.type == 'Pawn' %>
   <% if @piece.promotable? %>
     $('[data-piece-id="<%= @piece.id %>"]').popover({
-      constainer: 'body',
       placement: 'top',
       html: true,
       title: "PROMOTION:",
@@ -18,7 +12,6 @@ init_draggables_and_droppables();
 
     $('#pawn-promotion').html(' \
       <% %w[Bishop Knight Queen Rook].each do |type| %> \
-        <% @piece.reload %> \
         <%= link_to type, piece_promotion_path(@piece, id: @piece.id, x_position: @x, y_position: @y, promotion: type), \
                                                method: :put, remote: true %>&nbsp \
       <% end %>')

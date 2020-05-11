@@ -14,7 +14,7 @@ module GamesHelper
   def white_king
     return @game.pieces.where(piece_number: 4).first
   end
-  
+
   def white_queenside_rook
     return @game.pieces.where(x_position: 0, y_position: 0).first
   end
@@ -26,7 +26,7 @@ module GamesHelper
   def black_king
     return @game.pieces.where(piece_number: 10).first
   end
-  
+
   def black_queenside_rook
     return @game.pieces.where(x_position: 7, y_position: 0).first
   end

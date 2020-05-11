@@ -34,6 +34,9 @@ Style/IfUnlessModifier:
 Style/MixinUsage:
   Enabled: false
 
+Style/RedundantReturn:
+  Enabled: false
+
 Style/StringLiterals:
   Enabled: false
 

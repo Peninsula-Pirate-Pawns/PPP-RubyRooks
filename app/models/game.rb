@@ -46,11 +46,11 @@ class Game < ApplicationRecord
   end
 
   def get_player_one 
-    return (not player_one.nil?) ? player_one.email : "No Player One"
+    return player_one.nil? ? "No Player One" : player_one.email
   end
 
   def get_player_two
-    return (not player_two.nil?) ? player_two.email : "No Player Two"
+    return player_two.nil? ? "No Player Two" : player_two.email
   end
 
   def check?(white)

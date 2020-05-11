@@ -45,7 +45,6 @@ class PiecesController < ApplicationController
     white_promotions = { 'Bishop' => 2, 'Knight' => 1, 'Queen' => 3, 'Rook' => 0 }
     black_promotions = { 'Bishop' => 8, 'Knight' => 7, 'Queen' => 9, 'Rook' => 6 }
 
-    opponent = @game.opponent(current_user)
     @piece.is_white? ? number = white_promotions[@promotion] : number = black_promotions[@promotion]
     @piece.update(type: @promotion, piece_number: number)
 
@@ -119,7 +118,7 @@ class PiecesController < ApplicationController
     current_user.id == piece.game.p1_id ? 'Black King in Check.' : 'White King in Check.'
   end
 
-  def can_castle? 
+  def can_castle?
     piece = Piece.find(params[:piece_id])
     rook = Piece.find(params[:rook_id])
     if !piece.can_castle?(rook)

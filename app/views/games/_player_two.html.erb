@@ -3,12 +3,12 @@
   <br />
 </h4>
 <div class="row justify-content-center">  
-  <% if can_black_queenside_castle?(black_queenside_rook) %>
+  <% if black_king && can_black_queenside_castle?(black_queenside_rook) %>
     <%= link_to "Black Queen Side Castle", piece_castle_path(piece_id: black_king, rook_id: black_queenside_rook), 
               method: :get, remote: true, data: {confirm: 'Are you sure you want to Castle?'},
               class: 'btn btn-secondary' %>
     <% end %>
-  <% if can_black_kingside_castle?(black_kingside_rook) %>
+  <% if black_king && can_black_kingside_castle?(black_kingside_rook) %>
     <%= link_to "Black King Side Castle", piece_castle_path(piece_id: black_king, rook_id: black_kingside_rook), 
               method: :get, remote: true, data: {confirm: 'Are you sure you want to Castle?'},
               class: 'btn btn-secondary' %>
