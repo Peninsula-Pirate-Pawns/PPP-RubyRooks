@@ -2,8 +2,8 @@
 
 class GameChannel < ApplicationCable::Channel
   def subscribed
-    stream_from 'game_channel'
     stream_from "game_channel_user_#{current_user.id}"
+    stream_from 'game'
   end
 
   def unsubscribed

@@ -33,7 +33,7 @@ class PiecesController < ApplicationController
     @game = Game.find(@piece.game_id)
     @piece.castle!(@rook)
 
-    opponent = @game.opponent(current_user) 
+    opponent = @game.opponent(current_user)
     ActionCable.server.broadcast "game_channel_user_#{opponent&.id}", castle: render_movement, piece: @piece
   end
 
@@ -47,6 +47,20 @@ class PiecesController < ApplicationController
 
     @piece.is_white? ? number = white_promotions[@promotion] : number = black_promotions[@promotion]
     @piece.update(type: @promotion, piece_number: number)
+
+    check_response = check_test(@piece, @x, @y)
+    @game.end_game(@piece) if @game.checkmate?(!@piece.is_white?)
+    if @game.checkmate?(!@piece.is_white?)
+      flash.now[:alert] << 'The game has ended in checkmate!'
+    elsif check_response && @game.state != 'Draw' && !@game.checkmate?(!@piece.is_white?)
+      flash.now[:alert] << check_response if check_response
+      @game.write_attribute(:state, check_response)
+    elsif @game.state != 'Draw'
+      @game.write_attribute(:state, nil)
+    end
+    @game.save
+
+    ActionCable.server.broadcast "game", promotion: render_promotion, piece: @piece
   end
 
   def reload
@@ -81,6 +95,12 @@ class PiecesController < ApplicationController
     end
   end
 
+  def render_promotion
+    respond_to do |format|
+      format.js { render 'promotion' }
+    end
+  end
+
   def current_player_controls_piece?(piece)
     piece.is_white? && piece.game.player_one == current_user ||
       !piece.is_white? && piece.game.player_two == current_user
@@ -110,7 +130,7 @@ class PiecesController < ApplicationController
     current_user.id == piece.game.p1_id ? 'Black King in Check.' : 'White King in Check.'
   end
 
-  def can_castle? 
+  def can_castle?
     piece = Piece.find(params[:piece_id])
     rook = Piece.find(params[:rook_id])
     if !piece.can_castle?(rook)

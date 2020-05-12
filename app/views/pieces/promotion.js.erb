@@ -4,6 +4,7 @@ $('[data-piece-id="<%= @piece.id %>"]')
               class: "piece", \
               data: { piece_id: @piece.id, x_coord: @piece.x_position, y_coord: @piece.y_position } %>');
 
-<% flash.now[:alert] << @game.check_message(current_user) if @game.check?(!@piece.is_white?) %>
 $('.game-board').html('<%= j (render partial: 'games/board') %>');
+$('.player-one').html('<%= j (render partial: 'games/player_one') %>');
+$('.player-two').html('<%= j (render partial: 'games/player_two') %>');
 init_draggables_and_droppables();
