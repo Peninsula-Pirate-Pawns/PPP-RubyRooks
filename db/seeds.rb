@@ -7,6 +7,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Clear seeded games before reseeding
+Game.destroy(9000)
+Game.destroy(9001)
+
 # For working with Pawn Promotion bugs
 Game.create(id: 9000, name: 'Pawn Promotion Seed', creating_user_id: 1)
 

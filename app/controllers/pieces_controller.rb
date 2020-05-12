@@ -48,6 +48,18 @@ class PiecesController < ApplicationController
     @piece.is_white? ? number = white_promotions[@promotion] : number = black_promotions[@promotion]
     @piece.update(type: @promotion, piece_number: number)
 
+    check_response = check_test(@piece, @x, @y)
+    @game.end_game(@piece) if @game.checkmate?(!@piece.is_white?)
+    if @game.checkmate?(!@piece.is_white?)
+      flash.now[:alert] << 'The game has ended in checkmate!'
+    elsif check_response && @game.state != 'Draw' && !@game.checkmate?(!@piece.is_white?)
+      flash.now[:alert] << check_response if check_response
+      @game.write_attribute(:state, check_response)
+    elsif @game.state != 'Draw'
+      @game.write_attribute(:state, nil)
+    end
+    @game.save
+
     ActionCable.server.broadcast "game", promotion: render_promotion, piece: @piece
   end
 
