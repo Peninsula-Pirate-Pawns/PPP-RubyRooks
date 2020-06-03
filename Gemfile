@@ -76,9 +76,9 @@ end
 
 gem 'devise'
 gem 'figaro'
+gem 'jquery-ui-rails'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'rubocop', require: false
 gem 'simple_form'
-gem 'jquery-ui-rails'
