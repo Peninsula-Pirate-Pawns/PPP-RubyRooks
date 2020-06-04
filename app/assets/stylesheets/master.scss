@@ -63,7 +63,8 @@ a:hover { color: #dcae02; }
   margin-top: 5%;
 }
 
-.game-list-header {
+.dark-content-box-header {
+  width: 100%;
   background-color: #292b2c;
   margin-bottom: 0;
   padding: 10px;
@@ -224,13 +225,26 @@ hr {
 }
 
 .flex-form {
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   align-content: space-between;
+  border: solid 2px #F4FAF9;
+  padding: 15px;
+
+  .form-group {
+    text-align: left;
+    width: 80%;
+  }
 
   label {
     color: #dcae02;
+    margin-bottom: 10px;
   }
+}
+
+.font-size-ml {
+  font-size: 1.5rem;
 }
