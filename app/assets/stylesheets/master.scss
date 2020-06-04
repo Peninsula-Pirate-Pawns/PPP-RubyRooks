@@ -1,3 +1,7 @@
+.fc-pirate-gold {
+  color: #dcae02;
+}
+
 @media only screen and (max-width: 991px) {
   .gameboard {
     margin-left: auto;
@@ -247,4 +251,15 @@ hr {
 
 .font-size-ml {
   font-size: 1.5rem;
+}
+
+.inner-container-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.inner-container-row {
+  display: flex;
+  justify-content: space-evenly;
 }
