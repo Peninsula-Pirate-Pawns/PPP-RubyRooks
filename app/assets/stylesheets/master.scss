@@ -73,15 +73,6 @@ a:hover { color: #dcae02; }
   margin-top: 5%;
 }
 
-.dark-content-box-header {
-  width: 100%;
-  background-color: #292b2c;
-  margin-bottom: 0;
-  padding: 10px;
-  border: solid 2px white;
-  text-shadow: 4px -2px black;
-}
-
 .game-list-group {
   margin-bottom: 1rem;
 }
@@ -138,13 +129,15 @@ a:hover { color: #dcae02; }
   background-color: #292b2c;
   border: solid 2px #F4FAF9;
   text-align: center;
-  a {
-    margin: 0 auto 1rem auto;
-  }
-  p { 
-    color: #F4FAF9;
-    margin-top: 1rem;
-  }
+}
+
+.dark-content-box-header {
+  width: 100%;
+  background-color: #292b2c;
+  margin-bottom: 0;
+  padding: 10px;
+  border: solid 2px white;
+  text-shadow: 4px -2px black;
 }
 
 .white {
