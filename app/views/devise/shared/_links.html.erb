@@ -23,8 +23,8 @@
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
-  <p>Or log in with:</p>
-  <div class="inner-container-row mt-4">
+  <p class="fc-off-white mt-4 mb-0">Or log in with:</p>
+  <div class="inner-container-row mt-2 mb-2">
     <%- resource_class.omniauth_providers.each do |provider| %>
       <%= link_to omniauth_authorize_path(resource_name, provider) do %>
         <%= content_tag :i, '', class: "fab fa-#{provider} fc-pirate-gold font-size-ml" %><br />

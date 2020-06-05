@@ -3,24 +3,24 @@
       html: { class: 'flex-form mt-3 dark-content-box' }) do |f| %>
     <h3>Log in:</h3>
     <div class="field form-group">
-      <%= f.label :email %><br />
+      <%= f.label :email, class: 'fc-pirate-gold' %><br />
       <%= f.email_field :email, autofocus: true,  autocomplete: "email", class: 'form-control' %>
     </div>
     <br />
     <div class="field form-group">
-      <%= f.label :password %><br />
+      <%= f.label :password, class: 'fc-pirate-gold' %><br />
       <%= f.password_field :password, autocomplete: " current-password", class: 'form-control' %>
     </div>
     <br />
     <% if devise_mapping.rememberable? %>
       <div class="field">
         <%= f.check_box :remember_me, class: 'form-check-input' %>
-        <%= f.label :remember_me, class: 'form-check-label pl-0' %>
+        <%= f.label :remember_me, class: 'form-check-label pl-0 fc-pirate-gold' %>
       </div>
     <% end %>
     <br />
     <div class="actions">
-      <%= f.submit "Go!", class: 'black-gold-btn font-size-ml' %>
+      <%= f.submit "Go!", class: 'black-gold-btn font-size-ml mt-4' %>
     </div>
     <div class="inner-container mt-4">
       <%= render "devise/shared/links" %>
