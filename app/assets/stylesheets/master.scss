@@ -1,5 +1,11 @@
+// The color Pirates love!
 .fc-pirate-gold {
   color: #dcae02;
+}
+
+// Medium Large Font Size
+.font-size-ml {
+  font-size: 1.5rem;
 }
 
 @media only screen and (max-width: 991px) {
@@ -247,10 +253,6 @@ hr {
     color: #dcae02;
     margin-bottom: 10px;
   }
-}
-
-.font-size-ml {
-  font-size: 1.5rem;
 }
 
 .inner-container-col {

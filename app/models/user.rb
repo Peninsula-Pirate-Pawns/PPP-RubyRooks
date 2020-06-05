@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[facebook twitter google_oauth2]
+         :omniauthable, omniauth_providers: %i[facebook twitter google]
 
   has_many :created_games, :class_name => 'Game', :foreign_key => 'creating_user_id'
   has_many :invited_games, :class_name => 'Game', :foreign_key => 'invited_user_id'

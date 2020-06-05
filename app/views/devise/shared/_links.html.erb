@@ -26,9 +26,9 @@
   <p>Or log in with:</p>
   <div class="inner-container-row mt-4">
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", 
-          omniauth_authorize_path(resource_name, provider),
-          class: 'fc-pirate-gold' %><br />
+      <%= link_to omniauth_authorize_path(resource_name, provider) do %>
+        <%= content_tag :i, '', class: "fab fa-#{provider} fc-pirate-gold font-size-ml" %><br />
+      <% end %>
     <% end %>
   </div>
 <% end %>
