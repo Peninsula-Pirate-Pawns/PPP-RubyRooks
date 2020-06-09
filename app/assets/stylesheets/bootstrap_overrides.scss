@@ -1,14 +1,36 @@
 // Overrides for NavBar links
-.navbar-inverse .navbar-nav .nav-link {
-  color: rgb(220, 174, 2);
+.navbar-brand {
+  font-size: 2rem;
 }
 
-.navbar-inverse .navbar-nav .nav-link:hover {
-  color: rgb(255, 255, 255);
+.navbar-dark .navbar-nav .nav-link {
+  font-size: 1.5rem;
+  color: #F4FAF9;
+  &:hover { color: #dcae02; }
+}
+
+.navbar-dark .navbar-brand {
+  color: #dcae02;
+}
+
+.navbar-dark .navbar-nav {
+  color: #dcae02;
+}
+
+.navbar-dark .navbar-nav:hover {
+  color: #F4FAF9;
+}
+
+.navbar a {
+  font-family: 'Pirata One', cursive;
 }
 
 .popover-title {
   color: black;
   text-align: center;
   font-size: 25px;
+}
+
+.bg-dark {
+  background-color: #292b2c !important;
 }
