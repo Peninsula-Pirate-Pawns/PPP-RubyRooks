@@ -4,7 +4,7 @@
       <% if @games.available.present? %>
         <div class="col-12 col-sm">
           <ul class="game-list-group list-group">
-            <h3 class="game-list-header">Available Games</h3>
+            <h3 class="dark-content-box-header">Available Games</h3>
             <% @games.available.each do |game| %>
               <li class="game-list-item list-group-item">
                 <h3><%= game.name %></h3> &nbsp &nbsp &nbsp 
@@ -18,7 +18,7 @@
       <% else %>
         <div class="col-12 col-sm">
           <ul class="game-list-group list-group">
-            <h3 class="game-list-header">No games available.</h3>
+            <h3 class="dark-content-box-header">No games available.</h3>
             <li class="list-group-item center-btn">
               <%= link_to 'New Game', new_game_path, class: 'btn black-gold-btn'%>
             </li>
@@ -29,11 +29,11 @@
     <% else %>
       <div class="col-12 col-sm">
         <ul class="game-list-group list-group">
-          <h3 class="game-list-header">Ahoy matey!</h3>
-          <section class="welcome-login-message">
-            <p>Thanks for visiting our site. <br />
-                Please sign in or sign up to start a game of chess.</p>
-            <%= link_to 'Sign In', new_user_session_path, class: 'btn black-gold-btn'%>&nbsp&nbsp
+          <section class="dark-content-box px-3 pt-3 pb-3">
+            <h3 class="mb-0">Ahoy matey!</h3>
+            <p class="fc-pirate-gold mt-3">Thanks for visiting our site. <br />
+                Please log in or sign up to start a game of chess.</p>
+            <%= link_to 'Log In', new_user_session_path, class: 'btn black-gold-btn'%>&nbsp&nbsp
             <%= link_to 'Sign Up', new_user_registration_path, class: 'btn black-gold-btn'%>
           </section>
         </ul>

@@ -7,8 +7,8 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Enabled: false
 
-Metrics/LineLength:
-  Enabled: false
+Layout/LineLength:
+  Max: 150
 
 Style/ClassAndModuleChildren:
   Enabled: false

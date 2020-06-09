@@ -1,7 +1,8 @@
-<div class="col-10 offset-1">
-  <h1>Start a new game</h1>
-    <%= simple_form_for @game do |f| %>
-      <%= f.input :name %>
-      <%= f.submit 'Start', class: 'btn btn-primary' %>
-    <% end %>
+<div class="col-10 offset-1 mt-3 px-0 d-flex flex-column align-items-center">
+  <%= simple_form_for @game, html: { class: 'flex-form mt-3 dark-content-box' } do |f| %>
+    <h1>Start a new game</h1>
+
+    <%= f.input :name, label_html: { class: 'fc-pirate-gold' } %>
+    <%= f.submit 'Start', class: 'black-gold-btn font-size-ml mt-2' %>
+  <% end %>
 </div>

@@ -1,28 +1,29 @@
-<div class="col-10 offset-1">
-  <h2>Log in</h2>
-
-  <%= form_for(resource, as: resource_name, url:  session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true,  autocomplete: "email" %>
+<div class="col-10 offset-1 mt-3 px-0 d-flex flex-column align-items-center">
+  <%= form_for(resource, as: resource_name, url:  session_path(resource_name), 
+      html: { class: 'flex-form mt-3 dark-content-box' }) do |f| %>
+    <h3>Log in:</h3>
+    <div class="field form-group">
+      <%= f.label :email, class: 'fc-pirate-gold' %><br />
+      <%= f.email_field :email, autofocus: true,  autocomplete: "email", class: 'form-control' %>
     </div>
     <br />
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: " current-password" %>
+    <div class="field form-group">
+      <%= f.label :password, class: 'fc-pirate-gold' %><br />
+      <%= f.password_field :password, autocomplete: " current-password", class: 'form-control' %>
     </div>
     <br />
     <% if devise_mapping.rememberable? %>
       <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+        <%= f.check_box :remember_me, class: 'form-check-input' %>
+        <%= f.label :remember_me, class: 'form-check-label pl-0 fc-pirate-gold' %>
       </div>
     <% end %>
     <br />
     <div class="actions">
-      <%= f.submit "Log in" %>
+      <%= f.submit "Go!", class: 'black-gold-btn font-size-ml mt-4' %>
+    </div>
+    <div class="inner-container mt-4">
+      <%= render "devise/shared/links" %>
     </div>
   <% end %>
-  <br />
-  <%= render "devise/shared/links" %>
 </div>

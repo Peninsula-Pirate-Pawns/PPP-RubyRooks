@@ -1,3 +1,17 @@
+// Custom font colors to be applied anywhere
+.fc-pirate-gold {
+  color: #dcae02;
+}
+
+.fc-off-white {
+  color: #F4FAF9;
+}
+
+// Medium Large Font Size
+.font-size-ml {
+  font-size: 1.5rem;
+}
+
 @media only screen and (max-width: 991px) {
   .gameboard {
     margin-left: auto;
@@ -63,14 +77,6 @@ a:hover { color: #dcae02; }
   margin-top: 5%;
 }
 
-.game-list-header {
-  background-color: #292b2c;
-  margin-bottom: 0;
-  padding: 10px;
-  border: solid 2px white;
-  text-shadow: 4px -2px black;
-}
-
 .game-list-group {
   margin-bottom: 1rem;
 }
@@ -103,9 +109,12 @@ a:hover { color: #dcae02; }
   background-color: #292b2c;
   border: solid 2px #F4FAF9;
   color: #F4FAF9;
-}
 
-.black-gold-btn:hover { border-color: #dcae02; }
+  &:hover {
+    border-color: #dcae02;
+    cursor: pointer;
+  }
+}
 
 .right-align-btn {
   margin: 0 0 0 auto;
@@ -120,17 +129,19 @@ a:hover { color: #dcae02; }
   text-decoration: none;
 }
 
-.welcome-login-message {
+.dark-content-box {
   background-color: #292b2c;
   border: solid 2px #F4FAF9;
   text-align: center;
-  a {
-    margin: 0 auto 1rem auto;
-  }
-  p { 
-    color: #F4FAF9;
-    margin-top: 1rem;
-  }
+}
+
+.dark-content-box-header {
+  width: 100%;
+  background-color: #292b2c;
+  margin-bottom: 0;
+  padding: 10px;
+  border: solid 2px white;
+  text-shadow: 4px -2px black;
 }
 
 .white {
@@ -218,4 +229,31 @@ hr {
 
 .not-your-turn {
   background-color: grey;  
+}
+
+.flex-form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: space-between;
+  border: solid 2px #F4FAF9;
+  padding: 15px;
+
+  .form-group {
+    text-align: left;
+    width: 80%;
+  }
+}
+
+.inner-container-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.inner-container-row {
+  display: flex;
+  justify-content: space-evenly;
 }
